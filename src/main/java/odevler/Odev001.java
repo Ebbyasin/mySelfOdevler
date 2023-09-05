@@ -49,10 +49,11 @@ public class Odev001 {
             i++;
         }
         System.out.println(gunlukKazanclar);
-        System.out.println(getOrtalamaKazanc(gunlukKazanclar));
-        
 
-
+        double ort=getOrtalamaKazanc(gunlukKazanclar);
+        System.out.println(ort);
+        System.out.println("ortalamanın üstünde kazanc günleri : "+getOrtalamaninUstundeKazancGünleri(gunler, gunlukKazanclar, ort));
+        System.out.println("ortalamanın altında kazanc günleri : "+getOrtalamaninAltındaKazancGünleri(gunler, gunlukKazanclar, ort));
 
 
     }
@@ -65,17 +66,30 @@ public class Odev001 {
         return toplam/a.size();
 
     }
-    protected static List<String> getOrtalamaninUstundeKazancGünleri(List<String>gunler,List<Double>gunlukKazanclar,double ort){
+    protected static List<String> getOrtalamaninUstundeKazancGünleri(List<String>x,List<Double>y,double z){
         List<String>ortUstuGunler=new ArrayList<>();
-        for (int i = 0; i < gunler.size(); i++) {
-            if (gunlukKazanclar.get(i)>ort){
-                ortUstuGunler.add(gunler.get(i));
+        for (int i = 0; i < x.size(); i++) {
+            if (y.get(i)>z){
+                ortUstuGunler.add(x.get(i));
         }
 
 
         }
 
         return ortUstuGunler;
+    }
+
+    protected static List<String> getOrtalamaninAltındaKazancGünleri(List<String>x,List<Double>y,double z) {
+        List<String> ortAltıGunler = new ArrayList<>();
+        for (int i = 0; i < x.size(); i++) {
+            if (y.get(i) < z) {
+                ortAltıGunler.add(x.get(i));
+            }
+
+
+        }
+
+        return ortAltıGunler;
     }
 }
 
